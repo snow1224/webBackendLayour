@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="stylesheets/all.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d-flex">
+    <aside class="sidebar vh-100 border-end pt-3 d-flex bg-white flex-column">
+      <!-- 1. 後台名稱 -->
+      <div class="px-4 text-center">
+        <strong>Menu</strong>
+        - 後台管理
+      </div>
+      <div class="px-4 text-center">
+        <img src="./public/img_avatar1.png" class="rounded-circle" width="80" height="80">
+      </div>
+      <div class="px-4 text-center">
+        <strong>王雪朱</strong>
+        您好！
+      </div>
+      <!-- 2. 選單 -->
+      <div class="overflow-auto mt-3">
+        <div><!-- 不包含子選單 -->
+          <a class="sidebar-link"
+            href="/" role="button">
+            <div class="px-4">
+              <i class="bi bi-house me-2"></i>
+              首頁
+            </div>
+          </a>
+        </div>
+        <div><!-- 不包含子選單 -->
+          <a class="sidebar-link"
+            href="/data_collect.html" role="button">
+            <div class="px-4">
+              <i class="bi bi-collection me-2"></i>
+              資料蒐集
+            </div>
+          </a>
+        </div>
+        <div><!-- 包含子選項 -->
+          <a data-bs-toggle="collapse"
+            class="sidebar-link"
+            href="#menu-admin" role="button">
+            <div class="d-flex justify-content-between px-4">
+              <p class="mb-0">
+                <i class="bi bi-camera-video me-2"></i>
+                影片製作
+              </p>
+              <i class="bi bi-caret-down"></i>
+            </div>
+          </a>
+          <div class="collapse" id="menu-admin" role="button">
+            <a href="/video.html" class="d-block ps-5 text-dark text-decoration-none sidebar-link">
+              影片製作
+            </a>
+            <a href="/video_autolabel.html" class="d-block ps-5 text-dark text-decoration-none sidebar-link">
+              Auto Label
+            </a>
+            <a href="/video_datatransfer.html" class="d-block ps-5 text-dark text-decoration-none sidebar-link">
+              資料轉移
+            </a>
+          </div>
+        </div>
+      </div>
+      <div><!-- 不包含子選單 -->
+        <a class="sidebar-link"
+          href="/train.html" role="button">
+          <div class="px-4">
+            <i class="bi bi-cpu me-2"></i>
+            模型訓練
+          </div>
+        </a>
+      </div>
+      <!-- 3. 登出按鈕 -->
+      <a href="#" class="mt-auto sidebar-link">
+        <div class="px-4">
+          <p class="mb-0">
+            <i class="bi bi-box-arrow-right me-2"></i>
+              登出
+          </p>
+        </div>
+      </a>
+    </aside>
+    <main class="main">
+      <div class="bg-white w-100 border-bottom sticky-top">
+        <nav class="navbar navbar-light bg-light">
+          <a href="#"
+          class="d-inline-block py-3 px-4 border-end" id="toggle-btn">
+            <i class="bi bi-list"></i>
+          </a>
+        </nav>
+      </div>
+
+      <div class="p-4">
+        <div class="row">
+          <div class="col-lg-3 mb-3">
+            <nav id="detail-list-item" class="list-group sticky-top" style="top: 80px">
+              <a href="#filt_data" class="list-group-item list-group-item-action">
+                過濾資料
+              </a>
+              <a href="#outpudImgList" class="list-group-item list-group-item-action">
+                匯出圖片清單
+              </a>
+            </nav>
+          </div>
+          <div class="col-lg-9">
+            <div class="card mb-3">
+              <div class="card-header" id="filt_data">
+                過濾資料
+              </div>
+              <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-10">
+                        <input id="imgPathOption" name="imgPathOption" type="radio" class="form-check-input" checked="" required="">
+                        <label class="form-check-label" for="imgPathOption">OK路徑</label>
+                        <input id="imgPathOption" name="imgPathOption" type="radio" class="form-check-input" checked="" required="">
+                        <label class="form-check-label" for="imgPathOption">NG路徑</label>
+                        <br/>
+                        <label for="taxNumber" class="col-sm-2 col-form-label">輸入路徑</label>
+                        <input type="text" id="taxNumber" class="form-control" value="yolov5/data/model_name/img">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="invoiceType" class="col-sm-2 col-form-label">PEP</label>
+                    <div class="col-sm-12 p-2">
+                        <select name="" id="invoiceType" class="form-select">
+                        <option value="">PEP</option>
+                        <option value="" selected>PEP</option>
+                        <option value="">PEP</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="text-end">
+                  <button type="button" class="btn btn-outline-primary">篩選</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="card-header" id="outpudImgList">
+                匯出圖片清單
+              </div>
+              <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                  <thead class="bg-light">
+                                    <tr class="align-middle">
+                                      <th scope="col" class="ps-4">選擇圖片</th>
+                                      <th scope="col">圖片名稱</th>
+                                      <th scope="col">圖片路徑</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="text-nowrap">
+                                    <tr>
+                                      <td class="ps-4">
+                                        <input type="button" class="btn btn-outline-primary" value="切換">
+                                      </td>
+                                      <td>Modle_name</td>
+                                      <td class="pe-4">
+                                        yolov5/data/model_name/img
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4">
+                                          <input type="button" class="btn btn-outline-primary" value="切換">
+                                        </td>
+                                        <td>Modle_name</td>
+                                        <td class="pe-4">
+                                          yolov5/data/model_name/img
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="ps-4">
+                                          <input type="button" class="btn btn-outline-primary" value="切換">
+                                        </td>
+                                        <td>Modle_name</td>
+                                        <td class="pe-4">
+                                          yolov5/data/model_name/img
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="ps-4">
+                                          <input type="button" class="btn btn-outline-primary" value="切換">
+                                        </td>
+                                        <td>Modle_name</td>
+                                        <td class="pe-4">
+                                          yolov5/data/model_name/img
+                                        </td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+                        </div>
+                        <div class="card-footer bg-transparent py-3">
+                            <nav aria-label="Page navigation example">
+                              <ul class="pagination justify-content-end mb-0">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                            </nav>
+                          </div>
+                    </div>
+                    
+                </div>
+
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm h-100">
+                          <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" class="card-img-top" alt="...">
+                          <div class="card-body text-center">
+                            <a href="#" class="btn btn-primary">上一張</a>
+                            <a href="#" class="btn btn-primary">下一張</a>
+                            <a href="#" class="btn btn-primary">刪除</a>
+                          </div>
+                        </div>
+                      </div>
+                
+              </div>
+            </div>
+           </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+    <script type="text/javascript" src="public/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
